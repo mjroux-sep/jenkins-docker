@@ -26,6 +26,13 @@ COLOR = random.choice(["red", "green", "blue", "blue2", "darkblue", "pink"])
 
 @app.route("/")
 def main():
+        # Priorité à la variable d'environnement
+    COLOR = os.environ.get('APP_COLOR')
+
+    if COLOR not in color_codes:
+        # Si non définie ou invalide, choisir une couleur aléatoire
+        COLOR = random.choice(list(color_codes.keys()))
+    
     # return 'Hello'
     return render_template('hello.html', name=socket.gethostname(), color=color_codes[COLOR])
 
