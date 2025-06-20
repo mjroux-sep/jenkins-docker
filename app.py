@@ -35,6 +35,3 @@ COLOR = choose_color()
 @app.route("/")
 def main():
     return render_template('hello.html', name=socket.gethostname(), color=color_codes[COLOR])
-
-    # Run Flask Application
-    app.run(host="0.0.0.0", port=8081)
